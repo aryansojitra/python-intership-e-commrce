@@ -115,11 +115,15 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/6.0/howto/static-files/
 
-STATIC_URL = 'static/'
+STATIC_URL = '/static/'
+STATICFILES_DIRS = [BASE_DIR / 'myapp' / 'static']
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = BASE_DIR / 'media'
 
+# Default primary key field type
+DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
+# Razorpay Configuration
 RAZORPAY_KEY_ID = 'YOUR_RAZORPAY_KEY_ID'
 RAZORPAY_KEY_SECRET = 'YOUR_RAZORPAY_KEY_SECRET'    
