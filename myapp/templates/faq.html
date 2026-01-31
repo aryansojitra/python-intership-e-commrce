@@ -1,0 +1,59 @@
+{% extends 'base.html' %}
+{% block title %}FAQ - ShopHub{% endblock %}
+
+{% block content %}
+<div class="container" style="max-width: 900px; margin-top: 2rem; margin-bottom: 3rem;">
+    <h1 style="text-align: center; margin-bottom: 2rem;">Frequently Asked Questions</h1>
+    <p class="text-center text-muted" style="margin-bottom: 3rem;">Find answers to common questions about shopping with ShopHub</p>
+
+    <div style="display: flex; flex-direction: column; gap: 1.5rem;">
+        <!-- FAQ Item -->
+        <div class="card">
+            <h3 style="color: var(--primary-color); margin-bottom: 1rem;">📦 How do I track my order?</h3>
+            <p>You can track your order by visiting the "My Orders" page. Simply log in to your account, navigate to Orders, and view the status of all your purchases. You'll receive email updates at each stage of delivery.</p>
+        </div>
+
+        <div class="card">
+            <h3 style="color: var(--primary-color); margin-bottom: 1rem;">💳 What payment methods do you accept?</h3>
+            <p>We accept multiple payment methods including Cash on Delivery (COD), Credit/Debit Cards, UPI, Net Banking, and Wallets through Razorpay payment gateway. All transactions are secure and encrypted.</p>
+        </div>
+
+        <div class="card">
+            <h3 style="color: var(--primary-color); margin-bottom: 1rem;">🚚 What is your shipping policy?</h3>
+            <p>We offer free shipping on orders above ₹500. Standard delivery takes 3-5 business days. Express delivery is available for select locations at an additional charge. Orders are processed within 24 hours on business days.</p>
+        </div>
+
+        <div class="card">
+            <h3 style="color: var(--primary-color); margin-bottom: 1rem;">↩️ What is your return policy?</h3>
+            <p>We offer a 7-day return policy for most products. Items must be unused, in original packaging with tags intact. Simply initiate a return from your Orders page, and we'll arrange a pickup. Refunds are processed within 5-7 business days.</p>
+        </div>
+
+        <div class="card">
+            <h3 style="color: var(--primary-color); margin-bottom: 1rem;">🔒 Is my personal information secure?</h3>
+            <p>Absolutely! We use industry-standard SSL encryption to protect your data. We never share your personal information with third parties. Read our Privacy Policy for more details.</p>
+        </div>
+
+        <div class="card">
+            <h3 style="color: var(--primary-color); margin-bottom: 1rem;">📧 How can I contact customer support?</h3>
+            <p>You can reach us through the Contact Us page, email us at support@shophub.com, or call our helpline at +91-XXXX-XXXXXX. Our support team is available Monday-Saturday, 9 AM to 6 PM.</p>
+        </div>
+
+        <div class="card">
+            <h3 style="color: var(--primary-color); margin-bottom: 1rem;">🎁 Do you offer gift wrapping?</h3>
+            <p>Yes! We offer complimentary gift wrapping for orders over ₹1000. You can select this option during checkout. We also provide personalized gift messages.</p>
+        </div>
+
+        <div class="card">
+            <h3 style="color: var(--primary-color); margin-bottom: 1rem;">💰 Do you have any discounts or offers?</h3>
+            <p>Yes! We regularly run promotions and offer seasonal discounts. Subscribe to our newsletter to stay updated on the latest deals. First-time users get 10% off on their first purchase.</p>
+        </div>
+    </div>
+
+    <!-- Contact CTA -->
+    <div class="card" style="margin-top: 3rem; background: linear-gradient(135deg, var(--primary-color), var(--secondary-color)); color: white; text-align: center;">
+        <h3 style="color: white; margin-bottom: 1rem;">Still have questions?</h3>
+        <p style="color: rgba(255,255,255,0.9); margin-bottom: 1.5rem;">Our customer support team is here to help!</p>
+        <a href="{% url 'contact' %}" class="btn" style="background: white; color: var(--primary-color); font-weight: 700;">Contact Us</a>
+    </div>
+</div>
+{% endblock %}

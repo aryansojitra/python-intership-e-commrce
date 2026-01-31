@@ -30,16 +30,10 @@
                 <p class="product-description">{{ product.description|truncatewords:10 }}</p>
                 <div class="product-price">₹{{ product.price }}</div>
                 
-                {% if product.stock > 0 %}
                 <div class="product-actions">
                     <a href="{% url 'add_to_cart' product.id %}" class="btn btn-primary btn-sm" style="flex: 1; text-align: center;">Add to Cart</a>
                 </div>
-                <p style="font-size: 0.75rem; color: var(--success-color); font-weight: 600; text-align: center; margin-top: 0.5rem;">✓ In Stock ({{ product.stock }})</p>
-                {% else %}
-                <div class="product-actions">
-                    <button class="btn btn-sm" style="flex: 1; opacity: 0.5; cursor: not-allowed; background: #ccc;">Out of Stock</button>
-                </div>
-                {% endif %}
+                <p style="font-size: 0.75rem; color: var(--success-color); font-weight: 600; text-align: center; margin-top: 0.5rem;">✓ Available</p>
             </div>
         </div>
         {% endfor %}

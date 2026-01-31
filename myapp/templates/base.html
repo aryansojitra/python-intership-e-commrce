@@ -21,11 +21,12 @@
                     <li><a href="{% url 'home' %}" class="{% if request.resolver_match.url_name == 'home' %}active{% endif %}">Home</a></li>
                     <li><a href="{% url 'products' %}" class="{% if request.resolver_match.url_name == 'products' %}active{% endif %}">Products</a></li>
                     <li><a href="{% url 'cart' %}">🛒 Cart</a></li>
+                    <li><a href="{% url 'orders' %}" class="{% if request.resolver_match.url_name == 'orders' %}active{% endif %}">Orders</a></li>
                     <li><a href="{% url 'contact' %}">Contact</a></li>
                     <li><a href="{% url 'about' %}">About</a></li>
-                    <li style="color: white; padding: 0.5rem 1rem; background: rgba(255,255,255,0.2); border-radius: 0.5rem;">
-                        {{ request.session.user_name }}
-                    </li>
+                    <li><a href="{% url 'profile' %}" style="background: rgba(255,255,255,0.2); padding: 0.5rem 1rem; border-radius: 0.5rem;">
+                        👤 {{ request.session.user_name }}
+                    </a></li>
                     <li><a href="{% url 'logout' %}" style="background: rgba(255,255,255,0.3); padding: 0.5rem 1rem; border-radius: 0.5rem;">Logout</a></li>
                 {% else %}
                     <li><a href="{% url 'register' %}" class="{% if request.resolver_match.url_name == 'register' %}active{% endif %}">Register</a></li>
@@ -73,9 +74,9 @@
             </div>
             <div class="footer-section">
                 <h4>Customer Service</h4>
+                <a href="{% url 'faq' %}">FAQ</a>
                 <a href="#">Shipping Info</a>
                 <a href="#">Returns</a>
-                <a href="#">FAQ</a>
                 <a href="#">Support</a>
             </div>
             <div class="footer-section">
@@ -87,7 +88,7 @@
             </div>
         </div>
         <div class="footer-bottom">
-            <p>&copy; 2026 ShopHub. All rights reserved. | <a href="#">Privacy Policy</a> | <a href="#">Terms of Service</a></p>
+            <p>&copy; 2026 ShopHub. All rights reserved. | <a href="{% url 'privacy' %}">Privacy Policy</a> | <a href="#">Terms of Service</a></p>
         </div>
     </footer>
 

@@ -1,0 +1,65 @@
+{% extends 'base.html' %}
+{% block title %}User Profile - ShopHub{% endblock %}
+
+{% block content %}
+<div class="container" style="max-width: 800px; margin-top: 2rem; margin-bottom: 3rem;">
+    <h1 style="margin-bottom: 2rem;">My Profile</h1>
+
+    <div class="grid" style="grid-template-columns: 1fr 2fr; gap: 2rem;">
+        <!-- Profile Sidebar -->
+        <div class="card">
+            <div style="text-align: center; padding: 1rem;">
+                <div style="width: 100px; height: 100px; border-radius: 50%; background: linear-gradient(135deg, var(--primary-color), var(--secondary-color)); display: flex; align-items: center; justify-content: center; margin: 0 auto 1rem; font-size: 2.5rem; color: white; font-weight: 700;">
+                    {{ user.name|first|upper }}
+                </div>
+                <h3 style="margin-bottom: 0.5rem;">{{ user.name }}</h3>
+                <p class="text-muted" style="font-size: 0.875rem;">{{ user.email }}</p>
+            </div>
+            <div style="border-top: 1px solid var(--border-color); padding: 1rem;">
+                <a href="{% url 'orders' %}" class="btn btn-outline w-full" style="margin-bottom: 0.5rem;">My Orders</a>
+                <a href="{% url 'cart' %}" class="btn btn-outline w-full" style="margin-bottom: 0.5rem;">My Cart</a>
+                <a href="{% url 'logout' %}" class="btn btn-danger w-full">Logout</a>
+            </div>
+        </div>
+
+        <!-- Profile Details -->
+        <div>
+            <div class="card" style="margin-bottom: 1.5rem;">
+                <h3>Account Information</h3>
+                <div style="display: grid; gap: 1rem; margin-top: 1rem;">
+                    <div>
+                        <label style="color: var(--text-secondary); font-size: 0.875rem;">Full Name</label>
+                        <p style="font-weight: 600;">{{ user.name }}</p>
+                    </div>
+                    <div>
+                        <label style="color: var(--text-secondary); font-size: 0.875rem;">Email Address</label>
+                        <p style="font-weight: 600;">{{ user.email }}</p>
+                    </div>
+                    <div>
+                        <label style="color: var(--text-secondary); font-size: 0.875rem;">Member Since</label>
+                        <p style="font-weight: 600;">{{ user.created_at|date:"F Y"|default:"Recently" }}</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card">
+                <h3>Quick Stats</h3>
+                <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; margin-top: 1rem;">
+                    <div style="text-align: center; padding: 1rem; background: var(--light-bg); border-radius: 0.5rem;">
+                        <div style="font-size: 2rem; font-weight: 700; color: var(--primary-color);">{{ total_orders|default:0 }}</div>
+                        <p style="font-size: 0.875rem; color: var(--text-secondary);">Total Orders</p>
+                    </div>
+                    <div style="text-align: center; padding: 1rem; background: var(--light-bg); border-radius: 0.5rem;">
+                        <div style="font-size: 2rem; font-weight: 700; color: var(--success-color);">{{ completed_orders|default:0 }}</div>
+                        <p style="font-size: 0.875rem; color: var(--text-secondary);">Completed</p>
+                    </div>
+                    <div style="text-align: center; padding: 1rem; background: var(--light-bg); border-radius: 0.5rem;">
+                        <div style="font-size: 2rem; font-weight: 700; color: var(--secondary-color);">{{ cart_items|default:0 }}</div>
+                        <p style="font-size: 0.875rem; color: var(--text-secondary);">Cart Items</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

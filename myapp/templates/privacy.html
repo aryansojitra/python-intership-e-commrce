@@ -1,0 +1,73 @@
+{% extends 'base.html' %}
+{% block title %}Privacy Policy - ShopHub{% endblock %}
+
+{% block content %}
+<div class="container" style="max-width: 900px; margin-top: 2rem; margin-bottom: 3rem;">
+    <h1 style="text-align: center; margin-bottom: 1rem;">Privacy Policy</h1>
+    <p class="text-center text-muted" style="margin-bottom: 3rem;">Last Updated: January 20, 2026</p>
+
+    <div class="card" style="line-height: 1.8;">
+        <h2>1. Introduction</h2>
+        <p>Welcome to ShopHub. We respect your privacy and are committed to protecting your personal data. This privacy policy will inform you about how we look after your personal data when you visit our website and tell you about your privacy rights.</p>
+
+        <h2 style="margin-top: 2rem;">2. Data We Collect</h2>
+        <p>We may collect, use, store and transfer different kinds of personal data about you including:</p>
+        <ul style="margin-left: 2rem;">
+            <li><strong>Identity Data:</strong> Name, username, title</li>
+            <li><strong>Contact Data:</strong> Email address, telephone number, billing address, delivery address</li>
+            <li><strong>Transaction Data:</strong> Details about payments and products you have purchased</li>
+            <li><strong>Technical Data:</strong> IP address, browser type, device information</li>
+            <li><strong>Usage Data:</strong> Information about how you use our website and services</li>
+        </ul>
+
+        <h2 style="margin-top: 2rem;">3. How We Use Your Data</h2>
+        <p>We will only use your personal data when the law allows us to. Most commonly, we use your personal data for:</p>
+        <ul style="margin-left: 2rem;">
+            <li>Processing and delivering your orders</li>
+            <li>Managing your account and providing customer service</li>
+            <li>Sending you marketing communications (with your consent)</li>
+            <li>Improving our website and services</li>
+            <li>Fraud prevention and security</li>
+        </ul>
+
+        <h2 style="margin-top: 2rem;">4. Data Security</h2>
+        <p>We have implemented appropriate security measures to prevent your personal data from being accidentally lost, used, accessed, altered, or disclosed. We use SSL encryption for all sensitive data transfers and secure servers for data storage.</p>
+
+        <h2 style="margin-top: 2rem;">5. Data Retention</h2>
+        <p>We will only retain your personal data for as long as necessary to fulfill the purposes for which we collected it, including for legal, accounting, or reporting requirements.</p>
+
+        <h2 style="margin-top: 2rem;">6. Your Rights</h2>
+        <p>You have the right to:</p>
+        <ul style="margin-left: 2rem;">
+            <li>Access your personal data</li>
+            <li>Request correction of your personal data</li>
+            <li>Request erasure of your personal data</li>
+            <li>Object to processing of your personal data</li>
+            <li>Request restriction of processing your personal data</li>
+            <li>Request transfer of your personal data</li>
+            <li>Withdraw consent at any time</li>
+        </ul>
+
+        <h2 style="margin-top: 2rem;">7. Cookies</h2>
+        <p>We use cookies and similar tracking technologies to track activity on our website. You can instruct your browser to refuse all cookies or to indicate when a cookie is being sent.</p>
+
+        <h2 style="margin-top: 2rem;">8. Third-Party Links</h2>
+        <p>Our website may include links to third-party websites. We do not control these websites and are not responsible for their privacy policies.</p>
+
+        <h2 style="margin-top: 2rem;">9. Changes to Privacy Policy</h2>
+        <p>We may update this privacy policy from time to time. Any changes will be posted on this page with an updated revision date.</p>
+
+        <h2 style="margin-top: 2rem;">10. Contact Us</h2>
+        <p>If you have any questions about this privacy policy or our privacy practices, please contact us at:</p>
+        <ul style="margin-left: 2rem; list-style: none;">
+            <li>📧 Email: privacy@shophub.com</li>
+            <li>📞 Phone: +91-XXXX-XXXXXX</li>
+            <li>📍 Address: ShopHub HQ, India</li>
+        </ul>
+    </div>
+
+    <div style="margin-top: 2rem; text-align: center;">
+        <a href="{% url 'home' %}" class="btn btn-primary">Back to Home</a>
+    </div>
+</div>
+{% endblock %}

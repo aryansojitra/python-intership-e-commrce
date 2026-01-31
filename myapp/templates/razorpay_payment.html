@@ -1,0 +1,110 @@
+{% extends 'base.html' %}
+{% block title %}Payment - ShopHub{% endblock %}
+
+{% block content %}
+<div class="container" style="max-width: 600px; margin-top: 3rem; margin-bottom: 3rem;">
+    <div class="card">
+        <div class="card-header">
+            <h2 class="text-center" style="margin: 0;">Complete Your Payment</h2>
+        </div>
+        
+        <div class="card-body" style="padding: 2rem;">
+            <div style="text-align: center; margin-bottom: 2rem;">
+                <h3 style="color: var(--primary-color); font-size: 2rem;">₹{{ total_amount }}</h3>
+                <p style="color: var(--text-secondary); margin-top: 0.5rem;">Order Amount</p>
+            </div>
+            
+            <div style="background: var(--light-bg); padding: 1.5rem; border-radius: 0.75rem; margin-bottom: 2rem;">
+                <p style="margin: 0.5rem 0;"><strong>Order ID:</strong> #{{ order_id }}</p>
+                <p style="margin: 0.5rem 0;"><strong>Customer:</strong> {{ user_name }}</p>
+                <p style="margin: 0.5rem 0;"><strong>Email:</strong> {{ user_email }}</p>
+            </div>
+            
+            <button id="pay-button" type="button" class="btn btn-primary w-full" style="padding: 1rem; font-size: 1.1rem; margin-bottom: 1rem;">
+                Pay with Razorpay
+            </button>
+            
+            <a href="{% url 'checkout' %}" class="btn btn-outline w-full" style="text-align: center; padding: 0.75rem;">
+                Back to Checkout
+            </a>
+            
+            <div style="margin-top: 2rem; padding: 1rem; background: #f0f7ff; border-radius: 0.5rem; border-left: 4px solid var(--primary-color);">
+                <p style="margin: 0; font-size: 0.875rem; color: var(--text-secondary);">
+                    <strong>🔒 Secure Payment:</strong> Your payment information is encrypted and secured by Razorpay, a PCI DSS Level 1 compliant payment gateway.
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Razorpay Script -->
+<script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+<script>
+    document.getElementById('pay-button').addEventListener('click', function() {
+        const options = {
+            key: '{{ razorpay_key_id }}',
+            amount: {{ total_amount|floatformat:2 }} * 100,
+            currency: 'INR',
+            name: 'ShopHub',
+            description: 'Order Payment',
+            order_id: '{{ razorpay_order_id }}',
+            handler: function(response) {
+                // Payment successful
+                fetch('{% url "razorpay_callback" %}', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'X-CSRFToken': '{{ csrf_token }}'
+                    },
+                    body: JSON.stringify({
+                        razorpay_order_id: '{{ razorpay_order_id }}',
+                        razorpay_payment_id: response.razorpay_payment_id,
+                        razorpay_signature: response.razorpay_signature,
+                        order_id: {{ order_id }}
+                    })
+                })
+                .then(response => response.json())
+                .then(data => {
+                    if (data.success) {
+                        window.location.href = '{% url "order_success" %}';
+                    } else {
+                        alert('Payment verification failed: ' + data.message);
+                        window.location.href = '{% url "checkout" %}';
+                    }
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                    alert('Payment processing error');
+                    window.location.href = '{% url "checkout" %}';
+                });
+            },
+            prefill: {
+                name: '{{ user_name }}',
+                email: '{{ user_email }}'
+            },
+            theme: {
+                color: '#7c3aed'
+            },
+            modal: {
+                ondismiss: function() {
+                    alert('Payment cancelled');
+                    window.location.href = '{% url "checkout" %}';
+                }
+            }
+        };
+        
+        const rzp = new Razorpay(options);
+        rzp.open();
+    });
+</script>
+
+<style>
+    .w-full {
+        width: 100%;
+    }
+    
+    .text-center {
+        text-align: center;
+    }
+</style>
+{% endblock %}

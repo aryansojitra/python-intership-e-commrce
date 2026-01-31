@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+{% block title %}500 - Server Error{% endblock %}
+
+{% block content %}
+<div class="container" style="text-align: center; padding: 4rem 2rem; min-height: 60vh; display: flex; flex-direction: column; justify-content: center;">
+    <div style="font-size: 8rem; font-weight: 800; color: var(--danger-color); line-height: 1;">500</div>
+    <h1 style="margin-top: 1rem; margin-bottom: 1rem;">Server Error</h1>
+    <p style="font-size: 1.125rem; color: var(--text-secondary); margin-bottom: 2rem; max-width: 500px; margin-left: auto; margin-right: auto;">
+        Something went wrong on our end. Don't worry, our team has been notified and we're working to fix it.
+    </p>
+    <div style="display: flex; gap: 1rem; justify-content: center;">
+        <a href="{% url 'home' %}" class="btn btn-primary btn-lg">Go Home</a>
+        <a href="{% url 'contact' %}" class="btn btn-outline btn-lg">Contact Support</a>
+    </div>
+</div>
+{% endblock %}
